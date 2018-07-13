@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-socket.io",
+  "version": "1.0.0",
+  "description": "Socket.io Demo",
+  "main": "socket.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soravgarg123/nodejs-socket.io.git"
+  },
+  "keywords": [
+    "Socket.io",
+    "Node.js"
+  ],
+  "author": "“Sorav Garg <“soravgarg123@gmail.com”> (https://stackoverflow.com/users/3991407/sorav-garg)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soravgarg123/nodejs-socket.io/issues"
+  },
+  "homepage": "https://github.com/soravgarg123/nodejs-socket.io#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1",
+    "socket.io-redis": "^5.2.0"
+  }
+}

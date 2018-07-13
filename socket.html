@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font: 13px Helvetica, Arial;
+        }
+        
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+        
+        form #send_msg {
+            width: 8%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+        
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #messages li {
+            padding: 5px 10px;
+        }
+        
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        function getQueryStringValue(key) {
+            return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+        }
+        $(document).ready(function() {
+            console.log(getQueryStringValue('user'));
+            var socket = io('http://localhost:7575', {
+                query: "uid="+Math.random()+"&locale=en" // To send custom param with socket connection object
+            });
+            console.log('socket', socket);
+            $('body').on("click", "#send_msg", function() {
+                socket.emit('brodcast-user-msg', {
+                    userId: 15,
+                    msg: $('#m').val()
+                },function(resp){
+                    console.log('Socket Server Response',resp);
+                });
+                $('#messages').append($('<li>').text($('#m').val()));
+                $('#m').val('');
+            });
+
+            socket.on('brodcast-user-msg', function(data) {
+                $('#messages').append($('<li>').text(data.msg));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <ul id="messages"></ul>
+    <form action="">
+        <input id="m" autocomplete="off" />
+        <input type="button" id="send_msg" value="Send">
+    </form>
+</body>
+
+</html>
