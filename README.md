@@ -16,7 +16,8 @@ Used to develop real time application like chatting, gaming application.
 ```shell
     * Then Hit URL - http://localhost:7575 & Click On Socket Chat link
     * Open same url in different 2-3 browser Or different tabs
-    * Send message by clicking on send button and now at same time you will receive same message on all opened links.
+    * Send message by clicking on send button and now at same time you will 
+      receive same message on all opened links.
 ```
 
 
