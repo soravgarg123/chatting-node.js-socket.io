@@ -1,4 +1,4 @@
-# Real Time Chatting Node.js Socket.io Chatting Demo
+# Real Time Chatting Demo Using Node.js Socket.io
 
 Used to develop real time application like chatting, gaming application.
 
